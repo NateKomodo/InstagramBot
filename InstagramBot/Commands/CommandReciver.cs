@@ -38,12 +38,12 @@ namespace InstagramBot
             if (thread.IsGroup)
             {
                 Logging.log(thread.Title + ": " + thread.Items.Last().Text);
-                await APIFunctions.sendDMID(thread.ThreadId, CommandProcess.Proccess(thread.Items.Last()));
+                await APIFunctions.sendDMID(thread.ThreadId, CommandProcess.Proccess(thread.Items.Last(), thread));
             }
             else
             {
                 Logging.log(thread.Users.FirstOrDefault().UserName + ": " + thread.Items.Last().Text);
-                await APIFunctions.sendDM(thread.Users.FirstOrDefault().UserName, CommandProcess.Proccess(thread.Items.Last()));
+                await APIFunctions.sendDM(thread.Users.FirstOrDefault().UserName, CommandProcess.Proccess(thread.Items.Last(), thread));
             }
         }
     }

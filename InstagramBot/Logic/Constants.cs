@@ -25,6 +25,8 @@ namespace InstagramBot
 
         public static int reqCount;
 
+        public static string devkey;
+
         public static bool verifyData()
         {
             started = DateTime.Now;
@@ -58,6 +60,7 @@ namespace InstagramBot
                 {
                     if (counter == 0) username = line;
                     if (counter == 1) password = line;
+                    if (counter == 2) devkey = line;
                     counter++;
                 }
                 Console.WriteLine("Loaded credentials");
