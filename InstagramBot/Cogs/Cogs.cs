@@ -40,7 +40,7 @@ namespace InstagramBot
             {
                 string q = "\"";
                 await API.api.MessagingProcessor.ApproveDirectPendingRequestAsync(thread.ThreadId);
-                await APIFunctions.sendDMID(thread.ThreadId, "AutoAccept: Automatically accepted pending request. Reply with {q}help{q} for help.");
+                await APIFunctions.sendDMID(thread.ThreadId, $"AutoAccept: Automatically accepted pending request. Reply with {q}help{q} for help.");
                 Logging.log("AutoAccepted thread " + thread.ThreadId);
             }
         }
