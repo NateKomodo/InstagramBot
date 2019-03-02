@@ -38,7 +38,7 @@ namespace InstagramBot
             if (thread.IsGroup)
             {
                 Logging.log(thread.Title + ": " + thread.Items.Last().Text);
-                await APIFunctions.sendDMGroup(thread.ThreadId, CommandProcess.Proccess(thread.Items.Last()));
+                await APIFunctions.sendDMID(thread.ThreadId, CommandProcess.Proccess(thread.Items.Last()));
             }
             else
             {

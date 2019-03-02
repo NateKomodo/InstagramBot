@@ -13,10 +13,10 @@ namespace InstagramBot
             Logging.log($"Sending message to {desireUsername}: {content}");
         }
 
-        public static async Task sendDMGroup(string id, string content)
+        public static async Task sendDMID(string id, string content)
         {
             var directText = await API.api.MessagingProcessor.SendDirectTextAsync(null, id, content);
-            Logging.log($"Sending message to group with ID {id}: {content}");
+            Logging.log($"Sending message to thread with ID {id}: {content}");
         }
     }
 }

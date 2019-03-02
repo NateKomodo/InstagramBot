@@ -13,6 +13,7 @@ namespace InstagramBot
         {
             #pragma warning disable CS4014
             proccFollowRequests();
+            proccPendingComms();
             #pragma warning restore CS4014
         }
 
@@ -30,6 +31,17 @@ namespace InstagramBot
 
                     Logging.log("AutoFollowed back " + follower.UserName);
                 }
+            }
+        }
+        async Task proccPendingComms()
+        {
+            var pending = await API.api.MessagingProcessor.GetPendingDirectAsync(PaginationParameters.Empty);
+            foreach(var thread in pending.Value.Inbox.Threads)
+            {
+                string q = "\"";
+                await API.api.MessagingProcessor.ApproveDirectPendingRequestAsync(thread.ThreadId);
+                await APIFunctions.sendDMID(thread.ThreadId, "AutoAccept: Automatically accepted pending request. Reply with {q}help{q} for help.");
+                Logging.log("AutoAccepted thread " + thread.ThreadId);
             }
         }
     }
