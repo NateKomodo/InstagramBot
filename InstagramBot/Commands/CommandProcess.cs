@@ -23,6 +23,10 @@ namespace InstagramBot
             if (cmd == "like")
             {
                 var posts = API.api.UserProcessor.GetUserMediaByIdAsync(item.UserId, PaginationParameters.Empty).Result.Value;
+                if (posts.FirstOrDefault() == null)
+                {
+                    return "You dont have any posts or you have not accepted the follow request.";
+                }
                 var like = API.api.MediaProcessor.LikeMediaAsync(posts.FirstOrDefault().Pk);
                 return "NGL thats pretty desperate if your getting a bot to like your posts";
             }
